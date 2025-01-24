@@ -24,6 +24,7 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("new connection");
   client = socket;
+  console.log(client);
 });
 
 module.exports = client;
