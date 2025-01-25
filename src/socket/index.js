@@ -1,5 +1,5 @@
 const { Server } = require("socket.io");
-const { registerEventHandlers } = require("./events/connection");
+const { registerEventHandlers } = require("./registerEventHandlers");
 
 const initializeSocket = (server) => {
   const io = new Server(server, {
