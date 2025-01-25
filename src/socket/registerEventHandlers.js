@@ -1,8 +1,12 @@
 const messageEvents = require("./events/messageEvents");
 const addUserEvents = require("./events/addUserEvents");
+const readyToRecieveEvents = require("./events/readyToRecieveEvents");
 
 module.exports.registerEventHandlers = (io, socket) => {
   console.log("Handling connection for:", socket.id);
+
+  // Handle client is ready to recieve active user event
+  readyToRecieveEvents(io, socket);
 
   // Handle message event
   messageEvents(io, socket);
