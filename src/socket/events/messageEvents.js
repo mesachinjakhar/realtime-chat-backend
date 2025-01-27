@@ -1,7 +1,12 @@
 module.exports = (io, socket) => {
   // Handle 'message' event
-  socket.on("message", (msg) => {
-    console.log(`Message received: ${msg}`);
-    io.emit("new-message", msg); // Broadcast to all clients
+  socket.on("new-message", (msg) => {
+    console.log(`Message received: ${msg.to} ${msg.message}`);
+    socket.to(msg.to).emit("message", {
+      type: "server",
+      to: msg.to,
+      from: socket.id,
+      message: msg.message,
+    });
   });
 };
